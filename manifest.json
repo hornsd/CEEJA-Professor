@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Professor CEEJA",
+  "version": "1.13",
+  "description": "Ferramenta para auxílio dos professores do CEEJA.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://aprender.sed.ms.gov.br/report/progress/index.php*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://aprender.sed.ms.gov.br/report/progress/index.php*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["xlsx.full.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
